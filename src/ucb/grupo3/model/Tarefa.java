@@ -3,11 +3,11 @@ package ucb.grupo3.model;
 import java.time.LocalDateTime;
 
 public class Tarefa {
-    private int id;
+    private final int id;
     private String titulo;
     private String descricao;
     private boolean completa;
-    private LocalDateTime dataAgora;
+    private final LocalDateTime dataCriacao;
 
     // Construtores (recursivos, não está na descrição da atividade, mas foi solicitado na aula)
     public Tarefa(int id){
@@ -17,7 +17,7 @@ public class Tarefa {
     public Tarefa(int id, String titulo){
         this.id = id;
         this.titulo = titulo;
-        this.dataAgora = LocalDateTime.now();
+        this.dataCriacao = LocalDateTime.now();
         this.completa = false;
     }
 
@@ -36,10 +36,6 @@ public class Tarefa {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getTitulo() {
         return titulo;
     }
@@ -56,12 +52,8 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public LocalDateTime getDataAgora() {
-        return dataAgora;
-    }
-
-    public void setDataAgora(LocalDateTime dataAgora) {
-        this.dataAgora = dataAgora;
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
     }
 
     public boolean isCompleta() {
