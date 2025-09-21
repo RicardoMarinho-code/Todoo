@@ -5,6 +5,7 @@ import ucb.grupo3.service.TarefaServico;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -43,13 +44,13 @@ public class Main {
                 }
                 case 3: {
                     List<Tarefa> pendentes = servico.visualizarTarefas()
-                            .stream().filter(t -> !t.isCompleta()).toList();
+                            .stream().filter(t -> !t.isCompleta()).collect(Collectors.toList());
                     listarTarefas(pendentes);
                     break;
                 }
                 case 4: {
                     List<Tarefa> concluidas = servico.visualizarTarefas()
-                            .stream().filter(Tarefa::isCompleta).toList();
+                            .stream().filter(Tarefa::isCompleta).collect(Collectors.toList());
                     listarTarefas(concluidas);
                     break;
                 }
@@ -112,11 +113,9 @@ public class Main {
         } else {
             for (Tarefa t : tarefas) {
                 String tCompleta = t.isCompleta() ? "Sim" : "Não";
-                System.out.println("ID: " + t.getId() +
-                        " | Título: " + t.getTitulo() +
-                        " | Descrição: " + t.getDescricao() +
-                        " | Concluída: " + tCompleta +
-                        " | Criada em: " + t.getDataAgora());
+                System.out.println("ID: " + t.getId() + " | Título: " + t.getTitulo() + " | Descrição: "
+                        + t.getDescricao() + " | Concluída: " + tCompleta + " | Criada em: "
+                        + t.getDataCriacao());
             }
         }
     }
